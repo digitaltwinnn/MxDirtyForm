@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="DirtyForms.widget.DirtyForms" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+    <name>DirtyForms</name>
+    <description>Monitor Mendix dataviews for modifications on any field, make it visual and actionable.</description>
+    <icon />
+    <properties>
+        <property key="preloadMicroflow" type="microflow" required="false" defaultValue="">
+            <caption>Preload Microflow</caption>
+            <category>Initialisation</category>
+            <description>The microflow to preload name/dirty-value pairs (see Microflow response section) during initialisation.</description>
+            <returnType type="Object" entityProperty="dirtyNameValuePair" isList="true"/>
+        </property>
+        
+
+        <property key="dirtyNameValuePair" type="entity" isPath="optional" allowNonPersistableEntities="true" pathType="reference" required="false">
+            <caption>NameValue pair</caption>
+            <category>Initialisation - Input</category>
+            <description>The entity used by the Preload Microflow as return values with a name/value pair.</description>
+        </property>
+        <property key="dirtyFieldName" type="attribute" entityProperty="dirtyNameValuePair" required="false">
+            <caption>Name attribute</caption>
+            <category>Initialisation - Input</category>
+            <description>The attribute used to identify the field that is dirty. Important: must match the name attribute of the input field.</description>
+            <attributeTypes>
+                <attributeType name="String" />
+            </attributeTypes>
+        </property>
+        <property key="dirtyValue" type="attribute" entityProperty="dirtyNameValuePair" required="false">
+            <caption>Value attribute</caption>
+            <category>Initialisation - Input</category>
+            <description>The attribute used to preload the dirty value of the field.</description>
+            <attributeTypes>
+                <attributeType name="String" />
+            </attributeTypes>
+        </property>
+
+
+        <property key="displayOriginalValue" type="boolean" required="true" defaultValue="true">
+            <caption>Display original</caption>
+            <category>Behavior - Field</category>
+            <description>Display the original value underneath the field when it gets dirty.</description>
+        </property>
+        <property key="originalValuePrefix" type="string" required="true" defaultValue="Original value: ">
+            <caption>Prefix original</caption>
+            <category>Behavior - Field</category>
+            <description>The prefix text that will be displayed before the original value.</description>
+        </property>
+        <property key="clickToResetOriginalValue" type="boolean" required="true" defaultValue="true">
+            <caption>Click to reset</caption>
+            <category>Behavior - Field</category>
+            <description>Doubleclick the orignal value to reset the field back to its original.</description>
+        </property>
+
+
+        <property key="hasResetButton" type="boolean" required="true" defaultValue="true">
+            <caption>Reset button</caption>
+            <category>Behavior - Context</category>
+            <description>Provide a reset button to reset all fields to their original value.</description>
+        </property>
+
+
+        <property key="browserCloseNotification" type="string" required="false" defaultValue="You've made changes on this page which aren't saved. If you leave you will lose these changes.">
+            <caption>Notify browser close</caption>
+            <category>Behavior - Context</category>
+            <description>Notify the user when they try to close the browser while dirty fields still exist.</description>
+        </property>
+
+
+        <property key="onDirtyMicroflow" type="microflow" required="false" defaultValue="">
+            <caption>OnDirty</caption>
+            <category>Behavior - Context</category>
+            <description>The microflow to execute when the form becomes dirty. This occurs when a user for example for the first time starts editing a input field. This does not necessarily means that the field will actually be changed (e.g. user can leave the original input intact when the field is going out of focus, this will trigger OnClean). For acting when the original data is considered changed (not only dirty) use the 'On Change' property of this widget, or default Mendix on change behavior if it needs to be fields specific.</description>
+            <returnType type="Boolean" />
+        </property>
+        <property key="onCleanMicroflow" type="microflow" required="false" defaultValue="">
+            <caption>OnClean</caption>
+            <category>Behavior - Context</category>
+            <description>The microflow to execute when the form becomes clean again. All fields have been left intact to their original value.</description>
+            <returnType type="Boolean" />
+        </property>
+
+    </properties>
+</widget>
+
