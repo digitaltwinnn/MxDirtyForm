@@ -1,7 +1,7 @@
 # Dirty Forms - Mendix Widget
 
-Provides various features to monitor, highlight, and act on field and dataview changes. 
-Based on a highly modified version of below Plugin to support Mendix and below features.
+Provides various options in the Mendix modeler to monitor, highlight and act on field- and dataview- changes. 
+This is a Mendix App Platform Dojo widget which is based on a modified version of the following jQuery library;
 (Dirty Forms jQuery Plugin | v2.0.0 | 2010-2015 Mal Curtis | License MIT)
 
 ## Contributing
@@ -10,17 +10,16 @@ For more information on contributing to this repository visit [Contributing to a
 
 ## Typical usage scenario
 
-- Indicate that certain fields or dataviews on the page have been modified (dirty) by the user and not submitted yet
-- Display the original field values, by monitoring the user modifications or preload them from for example a audit trail
-- Improve usability when editing many fields, provide options to restore values on screen by a simple field click or reset button
-- Perform dirty / clean business logic on dataview-level by executing configurable microflows
+- Indicate that certain fields or dataviews on the page have been modified (dirty) by the user and are not submitted yet
+- Display original field values, by monitoring the user modifications or preload them from for example a audit trail log
+- Improve usability when editing many fields, restore values on the screen by clicking a field or the reset button
+- Plug in additional behavior using the visual Mendix modeling language when a dataview becomes dirty or clean again
 - Ask for confirmation when a user closes the browser-window while the page is still 'dirty'
-- A combination of any of the above scenarios
 
 ## Features and limitations
 
 - Adds CSS classes to fields and dataviews when dirty / clean to support custom styling
-- Show the original value underneath the input (adds a <p> with a bootstrap help-block class)
+- Show the original value underneath the input (adds a <p> with a bootstrap 'help-block' class)
 - Doubleclick on the original value to restore the input field value back to its original
 - Use a reset-button to clean the entire dataview at once from all dirty fields and restore original values
 - Use microflows to provide preloaded dirty values to be displayed already when the dataviews is initialized
@@ -45,14 +44,12 @@ In case you do not want certain fields or dataviews to be monitored you can assi
 ## Custom CSS classes
 
 This widget adds a 'dirty' class to both the dataview and its input fields when it is considered dirty.
-You can use this for example to higlight which fields are considered dirty or highlight only the form itself.
-The dataview also gets a 'dirtylistening' class to be able show that the dataview is being monitored by the widget. The 'dirtyignore' class can be used to exclude both fields and / or nested dataviews from the widget and also indicate that to the user by providing custom styling.
-
-Note: none of these classes have any default style.
+The dataview gets a 'dirtylistening' class when the particular view is being monitored by the widget. 
+The 'dirtyignore' class can be used to exclude both fields and / or nested dataviews from the widget..
 
 ## Mendix widget properties
 
-- Preload Microflow: The microflow to preload name/dirty-value pairs during initialisation
+- Preload microflow: The microflow to preload name/dirty-value pairs during initialisation
 - NameValue pair: The entity used by the Preload Microflow as return values with a name/value pair
 - Name attribute: The attribute used to identify the field that is dirty
 - Value attribute: The attribute used to preload the dirty value of the field
