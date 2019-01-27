@@ -19,7 +19,7 @@ For more information on contributing to this repository visit [Contributing to a
 ## Features and limitations
 
 - Adds CSS classes to fields and dataviews when dirty / clean to support custom styling
-- Show the original value underneath the input (adds a '<p>' with a bootstrap 'help-block' class)
+- Show the original value underneath the input (adds a html paragraph with a bootstrap 'help-block' class)
 - Doubleclick on the original value to restore the input field value back to its original
 - Use a reset-button to clean the entire dataview at once from all dirty fields and restore original values
 - Use microflows to provide preloaded dirty values to be displayed already when the dataviews is initialized
